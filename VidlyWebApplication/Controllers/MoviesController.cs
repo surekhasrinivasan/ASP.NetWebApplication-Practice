@@ -15,12 +15,26 @@ namespace VidlyWebApplication.Controllers
             var movie = new Movie() { Name = "Shrek!" };
 
             // ActionResults which are the output of our Actions
+            return View(movie);           
+        }
 
-            return View(movie);
-            // return Content("Hello World");
-            // return HttpNotFound();
-            // return new EmptyResult();
-            // return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name" });
+        // Action parameters which are the input for Actions 
+        // Action parameters value can be embedded in the url, query string or in the data posted using the form 
+        
+        public ActionResult Edit(int id)
+        {
+            return Content("id =" + id);
+        }
+
+        // Use of Optional parameters in our Actions
+        // navigate to movies
+        public ActionResult Index(int? pageIndex, string sortBy)
+        {
+            if (!pageIndex.HasValue)
+                pageIndex = 1;
+            if (String.IsNullOrWhiteSpace(sortBy))
+                sortBy = "Name";
+            return Content(String.Format("pageIndex = {0}&sortBy={1}", pageIndex, sortBy));
         }
     }
 }
