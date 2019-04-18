@@ -10,17 +10,26 @@ namespace VidlyWebApplication.Controllers
     public class MoviesController : Controller
     {
         // GET: Movies
+        //public ActionResult Random()
+        //{
+        //    var movie = new Movie() { Name = "Shrek!" };
+
+        //    // ActionResults which are the output of our Actions
+        //    return View(movie);           
+        //}
+
         public ActionResult Random()
         {
             var movie = new Movie() { Name = "Shrek!" };
+            //var viewResult = new ViewResult();
+            //ViewResult.ViewData.Model
 
-            // ActionResults which are the output of our Actions
-            return View(movie);           
+            return View(movie);
         }
 
         // Action parameters which are the input for Actions 
         // Action parameters value can be embedded in the url, query string or in the data posted using the form 
-        
+
         public ActionResult Edit(int id)
         {
             return Content("id =" + id);
